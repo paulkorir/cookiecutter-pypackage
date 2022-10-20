@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "{{ cookiecutter.project_slug }}"
+author = "{{ cookiecutter.full_name.replace('\"', '\\\"') }}"
+author_email = "{{ cookiecutter.email }}"
+description = "{{ cookiecutter.project_short_description }}"
+url = "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}"
+readme = "README.rst"
+requires-python = ">=3.6"
+keywords = "{{ cookiecutter.keywords }}"
+license = {text = "{{ cookiecutter.open_source_license }}"}
+# enter the list of trove classifiers below
+classifiers = [
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+
+]
+dynamic = ["version"]
+
+[project.optional-dependencies]
+pdf = ["ReportLab>=1.2", "RXP"]
+rest = ["docutils>=0.3", "pack ==1.1, ==1.3"]
+
+[project.scripts]
+{{ cookiecutter.entry_point }} = "{{ cookiecutter.project_slug }}.__main__:main"
+
+
