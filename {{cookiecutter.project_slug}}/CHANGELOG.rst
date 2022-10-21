@@ -1,5 +1,5 @@
 =======
-History
+Changes
 =======
 
 {{ cookiecutter.version }} ({% now 'local' %})

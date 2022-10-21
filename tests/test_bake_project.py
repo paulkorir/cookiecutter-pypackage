@@ -159,7 +159,7 @@ def test_bake_without_author_file(cookies):
         # Assert there are no spaces in the toc tree
         docs_index_path = result.project.join('docs/index.rst')
         with open(str(docs_index_path)) as index_file:
-            assert 'contributing\n   history' in index_file.read()
+            assert 'contributing\n   changelog' in index_file.read()
 
         # Check that
         manifest_path = result.project.join('MANIFEST.in')
@@ -317,8 +317,8 @@ def test_bake_with_argparse_console_script_cli(cookies):
     context = {'command_line_interface': 'argparse'}
     result = cookies.bake(extra_context=context)
     project_path, project_slug, project_dir = project_info(result)
-    module_path = os.path.join(project_dir, 'cli.py')
-    module_name = '.'.join([project_slug, 'cli'])
+    module_path = os.path.join(project_dir, '__main__.py')
+    module_name = '.'.join([project_slug, '__main__'])
     spec = importlib.util.spec_from_file_location(module_name, module_path)
     cli = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(cli)

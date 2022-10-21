@@ -15,13 +15,13 @@ Before Your First Release
 For Every Release
 -------------------
 
-#. Update HISTORY.rst
+#. Update CHANGELOG.rst
 
 #. Commit the changes:
 
     .. code-block:: bash
 
-        git add HISTORY.rst
+        git add CHANGELOG.rst
         git commit -m "Changelog for upcoming release 0.1.1."
 
 #. Update version number (can also be patch or major)

@@ -1,31 +1,56 @@
+{%- set license_classifiers = {
+    'MIT license': 'License :: OSI Approved :: MIT License',
+    'BSD license': 'License :: OSI Approved :: BSD License',
+    'ISC license': 'License :: OSI Approved :: ISC License (ISCL)',
+    'Apache Software License 2.0': 'License :: OSI Approved :: Apache Software License',
+    'GNU General Public License v3': 'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
+} -%}
 [build-system]
 requires = ["setuptools", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "{{ cookiecutter.project_slug }}"
-author = "{{ cookiecutter.full_name.replace('\"', '\\\"') }}"
-author_email = "{{ cookiecutter.email }}"
+dynamic = ["version"]
+{%- if cookiecutter.open_source_license in license_classifiers %}
+license = {text = "{{ cookiecutter.open_source_license }}"}
+{%- endif %}
+authors = [
+    {name = "{{ cookiecutter.full_name.replace('\"', '\\\"') }}"},
+    {email = "{{ cookiecutter.email }}"},
+]
 description = "{{ cookiecutter.project_short_description }}"
-url = "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}"
 readme = "README.rst"
 requires-python = ">=3.6"
-keywords = "{{ cookiecutter.keywords }}"
-license = {text = "{{ cookiecutter.open_source_license }}"}
+keywords = ["{{ cookiecutter.keywords }}"]
 # enter the list of trove classifiers below
 classifiers = [
-    "Programming Language :: Python :: 3",
+    'Natural Language :: English',
+    'Programming Language :: Python :: 3',
+    'Programming Language :: Python :: 3.6',
+    'Programming Language :: Python :: 3.7',
+    'Programming Language :: Python :: 3.8',
+{%- if cookiecutter.open_source_license in license_classifiers %}
+    "{{ license_classifiers[cookiecutter.open_source_license] }}",
+{%- endif %}
 ]
 dependencies = [
 
 ]
-dynamic = ["version"]
 
 [project.optional-dependencies]
-pdf = ["ReportLab>=1.2", "RXP"]
-rest = ["docutils>=0.3", "pack ==1.1, ==1.3"]
+{%- if cookiecutter.use_pytest == 'y' %}
+test = [
+    "pytest>6.0",
+    "pytest-cov",
+]
+{%- endif %}
+
+[project.urls]
+homepage = "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}"
+documentation = "https://{{ cookiecutter.project_slug }}.readthedocs.org"
+repository = "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}"
+changelog = "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/CHANGELOG.md"
 
 [project.scripts]
 {{ cookiecutter.entry_point }} = "{{ cookiecutter.project_slug }}.__main__:main"
-
-
