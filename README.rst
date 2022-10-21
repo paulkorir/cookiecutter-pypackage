@@ -24,12 +24,11 @@ Features
 --------
 
 * Testing setup with ``unittest`` and ``python setup.py test`` or ``pytest``
-* Travis-CI_: Ready for Travis Continuous Integration testing
+* `Github Workflows`_: Ready for Travis Continuous Integration testing
 * Tox_ testing: Setup to easily test for Python 3.6, 3.7, 3.8
 * Sphinx_ docs: Documentation ready for generation with, for example, `Read the Docs`_
-* bump2version_: Pre-configured version bumping with a single command
 * Auto-release to PyPI_ when you push a new tag to master (optional)
-* Command line interface using Click (optional)
+* Command line interface using Argparse (optional)
 
 .. _Cookiecutter: https://github.com/cookiecutter/cookiecutter
 
@@ -132,12 +131,11 @@ I also accept pull requests on this, if they're small, atomic, and if they
 make my own packaging experience better.
 
 
-.. _Travis-CI: http://travis-ci.org/
+.. _`Github Workflows`: https://docs.github.com/en/actions/using-workflows
 .. _Tox: http://testrun.org/tox/
 .. _Sphinx: http://sphinx-doc.org/
 .. _Read the Docs: https://readthedocs.io/
 .. _`pyup.io`: https://pyup.io/
-.. _bump2version: https://github.com/c4urself/bump2version
 .. _Punch: https://github.com/lgiordani/punch
 .. _Poetry: https://python-poetry.org/
 .. _PyPi: https://pypi.python.org/pypi
